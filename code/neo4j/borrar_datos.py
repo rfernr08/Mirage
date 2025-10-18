@@ -2,7 +2,7 @@ import dotenv
 import os
 from neo4j import GraphDatabase
 
-load_status = dotenv.load_dotenv("code/neo4j/Neo4j-b0adcf45-Created-2025-07-09.txt")
+load_status = dotenv.load_dotenv("C:\\Users\\Usuario\\Documents\\Workspace\\Estudio-Psiquiatricos\\code\\neo4j\\Neo4j-921e6a7b-Created-2025-10-13.txt")
 if load_status is False:
     raise RuntimeError('Environment variables not loaded.')
 

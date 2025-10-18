@@ -5,7 +5,7 @@ import ast
 import pandas as pd
 
 # Conexión a Neo4j
-load_status = dotenv.load_dotenv("code/neo4j/Neo4j-b0adcf45-Created-2025-07-09.txt")
+load_status = dotenv.load_dotenv("code\\neo4j\\Neo4j-921e6a7b-Created-2025-10-13.txt")
 diagnosticos = "datasets/Full_Datos_Diag_Men.csv"
 relaciones = "datasets/relaciones_diagnosticos_psiquiatricos.csv"
 
