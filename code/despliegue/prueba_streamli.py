@@ -4,9 +4,11 @@ import torch
 import numpy as np
 
 # === Cargar modelo y tokenizer ===
-model_path = "models\dccuchile_bert-base-spanish-wwm-cased_combinado_final"  # carpeta donde guardaste tu modelo
+# ...existing code...
+model_path = "models/dccuchile_bert-base-spanish-wwm-cased_combinado_final"  # carpeta donde guardaste tu modelo
 tokenizer = AutoTokenizer.from_pretrained(model_path)
 model = AutoModelForSequenceClassification.from_pretrained(model_path)
+# ...existing code...
 
 def predecir_paciente_bert(diagnosticos):
     texto = " ".join(diagnosticos)  # concatenar diagnósticos
