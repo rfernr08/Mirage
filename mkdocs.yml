@@ -1,0 +1,46 @@
+site_name: Mirage
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - toc.integrate
+    - search.highlight
+    - search.suggest
+    - content.code.annotate
+    - content.code.copy
+    - content.tabs.link
+  language: es
+  pallete:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/rfernr08/Estudio-Psiquiatricos
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  - attr_list
+
+
+
+copyright: |
+  &copy; 2025 <a href="https://rfernr08.github.io/">Raúl Fernández</a>. Todos los derechos reservados.
+
