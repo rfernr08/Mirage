@@ -1,4 +1,20 @@
 site_name: Mirage
+site_url: https://rfernr08.github.io/Mirage/
+site_description: Documentación y recursos sobre estudios psiquiátricos y neurociencia.
+nav:
+  - Inicio: index.md
+  - Estudios Psiquiátricos:
+      - Introducción: docs/introduccion.md
+      - Métodos de Evaluación: docs/estudios/metodos_evaluacion.md
+      - Tipos de Estudios: docs/estudios/tipos_estudios.md
+      - Análisis de Datos: docs/estudios/analisis_datos.md
+  - Recursos:
+      - Herramientas y Software: docs/recursos/herramientas_software.md
+      - Bases de Datos: docs/recursos/bases_datos.md
+      - Lecturas Recomendadas: docs/recursos/lecturas_recomendadas.md
+  - Acerca de: docs/acerca_de.md
+  - Contacto: docs/contacto.md
+
 theme:
   name: material
   features:
@@ -12,13 +28,19 @@ theme:
     - content.code.copy
     - content.tabs.link
   language: es
-  pallete:
+  palette:
     - scheme: default
-      primary: indigo
-      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Modo oscuro
+      primary: teal
+      accent: purple
     - scheme: slate
-      primary: indigo
-      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Modo claro
+      primary: teal
+      accent: lime
 
 extra:
   social:
