@@ -37,4 +37,23 @@ video:
 
 Al final le mandamos  un correo de cual es el enlace de GitHub
 Se puede ir a segunda convocatoria
+
 Lo que no se acepta es que si alguien no ha hecho lo que los otros han hecho no se le puede valorar igual que a los demás
+
+En GitHub se debe subir el proyecto completo junto con una memoria explicativa que incluya:
+
+Descripción del proyecto.
+
+Tres casos de uso (consultas) representativos.
+
+Análisis DAFO.
+
+Lecciones aprendidas.
+
+Líneas de futuro o posibles mejoras.
+
+
+Además, se debe grabar un vídeo explicativo del proyecto utilizando un PowerPoint de apoyo (este archivo también puede subirse al repositorio de GitHub). El video tambien se sube.
+Opcionalmente, puede grabarse otro vídeo demostrativo mostrando el funcionamiento de la aplicación.
+
+Nota: si se añaden capas de seguridad al proyecto, la calificación sube.
