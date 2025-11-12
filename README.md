@@ -1,42 +1,102 @@
-# Estudio-Psiquiatricos
+# Project for a Chatbot that predicts Schizofrenia in a pacient
 
-Procesamiento y analisis de un dataset sobre diagnosticos psiquiatricos
+Mirage is a chatbot designed to receive a list of symptoms that a person could have and provide an analysis of the likelihood of that person having Schizophrenia. The system uses Python and various technologies like Docker to create an interactive experience. By receiving information about the symptoms, the chatbot offers an analysis adjusted to each profile.
 
-# Codigos Usados:
+## Table of Contents
+1. [Requirements](#Requirements)
+   - [Docker](#docker)
+   - [Makefile](#makefile)
+2. [Usage Instructions](#Usage_Instructions)
 
-# Csv manger
+---
 
--code/csv_manager/borrar_dups_csv.py
-Borra las lineas duplicadas de un csv, ya que la lista de relaciones de diagnosticos tenia algunas lineas que se repetian al aparecer varias veces la misma relacion en el dataset
+## Requirements
 
--code/csv_manager/excel_a_csv.py
-Codigo para poder pasar el excel del dataset a csv para un manejo mas comodo
+### Docker
+Docker must be installed on your system.
 
--code/csv_manager/juntar_csv.py
-Codigo que montaba las descripciones que tenia un csv, a las columnas de un csv con amyor numero de codigos
+- **Windows**: Follow this guide to install Docker:  
+  https://docs.docker.com/desktop/setup/install/windows-install/
 
--code/csv_manager/mergue_rapido.py
-Codigo sencillo para juntar 2 csv identicos en uno mayor
+- **Linux**: Use this tutorial for your distribution:  
+  https://docs.docker.com/engine/install/
 
--code/csv_manager/merge_csv.py
-Codigo que primero limpia los puntos sobrantes de un csv que tenia buena parte de los codigos ICD-10 y ICD-9 que existen
-Deespues junta con un join 2 csv de codigos y forma una lista larga de codigos de diagnosticos con sus 2 variantes, algunos con descripcion.
+### Makefile
+A Makefile is used to simplify Docker execution. Make sure you have make installed. Below are the instructions based on your operating system:
 
-# Dataset_tools
+#### On Windows
+If you don't have **Chocolatey** (choco) installed, run the following command in PowerShell as administrator:
+```
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+```
 
--code/dataset_tools/conversor-ICD.py
-Codigo que recorre todo un dataset. leyendo las columnas de diagnsoticos indivuales, diagnsotico psiquiatrico y conjunto de diagnsoticos, comprobando que esten
-todos los codigos en ICD-10 y si no pasandolos a ICD-10 (en caso de que esten en ICD-9)
-Finalemente añade nuevas columnas con las descripciones en español, ingles y variante en ICD-9 de cada codigo encontrado en el dataset.
+Then, install make with this command:
+```
+choco install make
+```
 
--code/dataset_tools/extraer_diag.py
-Extrae las columnas de diagnsoticos individuales y diagnsticos psquiatricos para poder sacar una lista con todos los diagnosticos encontrados en el 
-dataset y las relaciones entre ellos.
 
--code/dataset_tools/relacionador.py
-Codiogo que contruira la lista de diagnsoticos que se encuentran con diagnsoticos psquiatricos
+#### On Linux
+In most distributions, `make` is already installed. If not, use one of these commands based on your distribution:
 
--code/dataset_tools/lista_diag_multi.py
-Codigo para construir la informacion de cada diagnsoticos encontrado en el dataset.
-Descripcion en español|Codigo en ICD-10|Codigo en ICD-9|Descripcion en ingles|Embedding
-El embedding lo genera el metodo mismamente usando un all-MiniLM-L6-v2 de sentence transformer
+- **Debian/Ubuntu**:
+```
+sudo apt update
+sudo apt install make
+```
+
+- **Red Hat/Fedora**:
+```
+sudo dnf install make
+```
+
+- **Arch Linux**:
+```
+sudo pacman -S make
+```
+
+
+---
+
+
+## Usage Instructions
+
+1. Open PowerShell as Administrator if you're on Windows, or a terminal if you're on Linux.
+
+2. Clone the repository
+
+```
+git clone https://github.com/rfernr08/Mirage.git
+```
+Or manually download the repository.
+
+3. Go to the project directory
+```
+cd Mirage
+cd project
+```
+
+4. If you're on Windows, open Docker Desktop
+
+5. Start the build process **(it may take up to two hours)**
+- **Windows**:
+```
+make build
+```
+
+- **Linux**:
+```
+sudo make build
+```
+
+
+6. Run the application
+- **Windows**:
+```
+make run
+```
+
+- **Linux**:
+```
+sudo make run
+```
