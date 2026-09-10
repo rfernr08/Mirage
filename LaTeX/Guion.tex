@@ -1,0 +1,224 @@
+\documentclass[11pt, a4paper]{article}
+
+% --- PAQUETES DE CONFIGURACIÓN BÁSICA ---
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-tabla]{babel}
+\usepackage[margin=2cm]{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage[most]{tcolorbox}
+\usepackage{fontawesome5} % Para iconos de reloj y notas
+
+% --- PALETA DE COLORES PROFESIONAL ---
+\definecolor{primaryColor}{HTML}{1A365D}   % Azul marino oscuro
+\definecolor{secondaryColor}{HTML}{2B6CB0} % Azul medio
+\definecolor{accentColor}{HTML}{319795}    % Verde azulado / Teal
+\definecolor{speechBg}{HTML}{F7FAFC}       % Gris muy claro para caja de discurso
+\definecolor{speechBorder}{HTML}{CBD5E0}   % Gris borde
+\definecolor{timeBadge}{HTML}{E2E8F0}      % Fondo distintivo de tiempo
+
+% --- CONFIGURACIÓN DE SECCIONES ---
+\titleformat{\section}
+  {\color{primaryColor}\normalfont\Large\bfseries}
+  {\thesection}{1em}{}
+  [\color{secondaryColor}\titlerule]
+
+\titlespacing*{\section}{0pt}{12pt}{8pt}
+
+% --- ESTILO DE CAJAS PARA EL DISCURSO ("Qué decir exactamente") ---
+\newtcolorbox{speechbox}[1]{
+  enhanced,
+  colback=speechBg,
+  colframe=secondaryColor,
+  arc=3mm,
+  boxrule=1pt,
+  leftrule=4pt,
+  fonttitle=\bfseries\color{white},
+  coltitle=white,
+  colbacktitle=secondaryColor,
+  title={\faCommentDots\ #1},
+  attach boxed title to top left={yshift=-2mm, xshift=4mm},
+  boxed title style={arc=1.5mm, boxrule=0pt},
+  top=10pt, bottom=10pt, left=10pt, right=10pt
+}
+
+% --- COMANDO PARA INSIGNIA DE TIEMPO ---
+\newcommand{\timebadge}[2]{%
+  \tcbox[
+    on line,
+    colback=timeBadge,
+    colframe=speechBorder,
+    arc=2mm,
+    boxrule=0.5pt,
+    top=1mm, bottom=1mm, left=2mm, right=2mm
+  ]{\small \faClock\ \textbf{#1} \quad \textcolor{gray}{(#2)}}%
+}
+
+% --- DATOS DEL DOCUMENTO ---
+\title{%
+  \vspace{-1cm}
+  \Huge \textbf{\color{primaryColor}Guión de Defensa Oral de TFG} \\
+  \Large \color{secondaryColor}Predicción de diagnósticos psiquiátricos mediante modelos de aprendizaje automático
+}
+\author{\textbf{Autor:} Raúl Fernández Rodríguez \\ \\ \small Universidad de León}
+\date{}
+
+\begin{document}
+
+\maketitle
+\vspace{-1cm}
+
+% --- CRONOGRAMA RÁPIDO ---
+\begin{table}[h!]
+\centering
+\small
+\begin{tabular}{lllc}
+\toprule
+\textbf{Bloque} & \textbf{Contenido Principal} & \textbf{Tiempo} & \textbf{Minuto} \\
+\midrule
+1 & Planteamiento del Problema, Contexto y Objetivos & 1 min 30 s & 0:00 - 1:30 \\
+2 & Datos, Preprocesamiento y Conversor CIE-9/10 & 1 min 30 s & 1:30 - 3:00 \\
+3 & Estrategia Experimental, Data Leakage e IA & 1 min 30 s & 3:00 - 4:30 \\
+4 & Resultados Empíricos y Selección de Ingeniería & 2 min 30 s & 4:30 - 7:00 \\
+5 & Analítica Relacional de Grafos y Cartografía & 1 min 30 s & 7:00 - 8:30 \\
+6 & Transferencia Tecnológica y Web App & 0 min 30 s & 8:30 - 9:00 \\
+7 & Conclusiones y Trabajo Futuro & 1 min 00 s & 9:00 - 10:00 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\clearpage
+\section{Bloque 1: Planteamiento del Problema, Contexto y Objetivos}
+\timebadge{1 min 30 s}{Minuto 0:00 - 1:30}
+
+\paragraph{Puntos clave a recordar:}
+\begin{itemize}[noitemsep]
+    \item \textbf{Contexto:} Esquizofrenia como patología compleja con alta heterogeneidad y comorbilidad.
+    \item \textbf{Problema:} Información fragmentada en historias clínicas del CAULE (tablas SQL aisladas y texto libre).
+    \item \textbf{Reto:} Desconexión entre normativas CIE-9 y CIE-10.
+    \item \textbf{Objetivo:} Construcción de un CDSS basado en Grafos (Neo4j), Machine Learning y Deep Learning.
+\end{itemize}
+
+\begin{speechbox}{Discurso — Qué decir exactamente}
+"Buenos días a todos los miembros del tribunal. Mi nombre es Raúl Fernández Rodríguez y hoy les presento mi Trabajo de Fin de Grado titulado 'Predicción de diagnósticos psiquiátricos mediante modelos de aprendizaje automático'.
+
+La esquizofrenia representa uno de los desafíos más complejos en salud mental debido a su enorme variabilidad sintomática y al elevado índice de comorbilidades asociadas. En hospitales como el CAULE, disponemos de un volumen masivo de historias clínicas electrónicas; sin embargo, esta información suele quedar fragmentada en tablas estáticas o texto libre, lo que impide analizar la trayectoria completa del paciente.
+
+Para abordar esta problemática, formulamos la hipótesis de que es posible combinar la Ciencia de Datos, las bases de datos de grafos NoSQL y la Inteligencia Artificial para transformar un listado plano de registros en un ecosistema de conocimiento interconectado. El objetivo central de este TFG es construir un Sistema de Soporte a la Decisión Clínica (CDSS) capaz de predecir diagnósticos psiquiátricos definitivos y visibilizar patrones relacionales ocultos entre enfermedades."
+\end{speechbox}
+
+\newpage
+
+\section{Bloque 2: Datos, Preprocesamiento y el Hito del Conversor CIE-9/10}
+\timebadge{1 min 30 s}{Minuto 1:30 - 3:00}
+
+\paragraph{Puntos clave a recordar:}
+\begin{itemize}[noitemsep]
+    \item \textbf{Muestra:} 3.078 registros limpios del CAULE (2007-2019) con anonimización irreversible (RGPD).
+    \item \textbf{Desbalanceo:} F20 (Esquizofrenia) representa el 72,64\%, frente a clases minoritarias ($<0,5\%$).
+    \item \textbf{Hito principal:} Conversor bidireccional CIE-9/CIE-10 (108.054 equivalencias traducidas al español y API NLM en inglés). Recurso \textit{open-source}.
+\end{itemize}
+
+\begin{speechbox}{Discurso — Qué decir exactamente}
+"Para este estudio, partimos de una muestra hospitalaria real de 3.078 registros limpios del Complejo Asistencial Universitario de León. Garantizamos la máxima seguridad jurídica y ética mediante un proceso de anonimización irreversible en origen por el CAULE, bajo el marco del RGPD.
+
+Los datos presentaban un reto epidemiológico crítico: un desbalanceo de clases extremo donde la Esquizofrenia F20 abarcaba más del 72\% de la muestra, frente a patologías con apenas 5 o 13 registros como el trastorno esquizotípico F21.
+
+Quiero destacar en este punto uno de los principales hitos de mi TFG: la construcción y validación de un recurso de datos totalmente estructurado e independiente para la conversión bidireccional entre la CIE-9 y la CIE-10 en español. Mientras que herramientas oficiales como eCIEMaps solo permiten consultas individuales manuales, nosotros unificamos y depuramos múltiples fuentes hasta crear un archivo de 108.054 equivalencias traducidas al castellano. Este hito no solo permitió homogeneizar nuestro dataset histórico sin perder información, sino que queda publicado como un recurso abierto de gran valor para la investigación biomédica."
+\end{speechbox}
+\clearpage
+\section{Bloque 3: Estrategia Experimental, Control de Data Leakage y Paradigmas de IA}
+\timebadge{1 min 30 s}{Minuto 3:00 - 4:30}
+
+\paragraph{Puntos clave a recordar:}
+\begin{itemize}[noitemsep]
+    \item \textbf{Escenarios:} Dataset Original, RUS (submuestreo a 600 casos) e Híbrido RUS + VAE (310 embeddings sintéticos).
+    \item \textbf{Garantía Anti-Leakage:} Test set de 615 pacientes reales (20\%) congelado antes del VAE o RUS.
+    \item \textbf{Paradigmas:} Ensamble de Árboles (XGBoost, LightGBM), Transformers (BETO) y MLP en espacio latente.
+    \item \textbf{Métrica:} Weighted F1-Score.
+\end{itemize}
+
+\begin{speechbox}{Discurso — Qué decir exactamente}
+"Para abordar el desbalanceo de clases de forma rigurosa, planteamos una estrategia comparativa basada en tres escenarios de datos: el Dataset Original de control, un dataset reducido con submuestreo aleatorio (RUS) a 600 casos, y un Dataset Híbrido donde inyectamos 310 embeddings sintéticos generados mediante un Autoencoder Variacional (VAE).
+
+Es crucial remarcar el rigor metodológico aplicado para evitar la contaminación de datos o Data Leakage: el conjunto de test (615 pacientes reales) se congeló y aisló completamente antes de entrenar el VAE o aplicar el submuestreo. Así garantizamos que la evaluación final se realizó siempre sobre pacientes 100\% reales.
+
+Evaluamos dos paradigmas de Inteligencia Artificial: clasificadores tradicionales de ensamble de árboles como XGBoost o LightGBM sobre códigos discretos, y modelos profundos basados en Transformers, destacando BETO, para procesar la semántica de las descripciones textuales. \textbf{Mencionar MLP}  
+
+Todas las métricas se calcularon mediante el promedio ponderado (Weighted F1-Score) sobre el test set."
+\end{speechbox}
+
+\clearpage
+\section{Bloque 4: Resultados Empíricos y Selección de la Solución Final de Ingeniería}
+\timebadge{2 min 30 s}{Minuto 4:30 - 7:00}
+
+\paragraph{Puntos clave a recordar:}
+\begin{itemize}[noitemsep]
+    \item \textbf{Original:} BETO Combinado ($F1 = 0{,}6857$), XGBoost Texto ($F1 = 0{,}6738$, sin GPU).
+    \item \textbf{Caída RUS:} El submuestreo destruye variabilidad textual ($F1 < 0{,}50$).
+    \item \textbf{VAE + LightGBM:} Excelente adaptación al espacio latente por crecimiento \textit{leaf-wise} ($F1 = 0{,}4400$).
+    \item \textbf{Criterio de Despliegue:} Se descarta BETO para producción por falta de GPU en sistemas tipo MEDORA. Se selecciona \textbf{LightGBM + VAE} por baja latencia en CPU.
+\end{itemize}
+
+\begin{speechbox}{Discurso — Qué decir exactamente}
+"Pasando a los resultados del estudio, en el escenario desbalanceado Original, el modelo lingüístico BETO Cased en modalidad Combinada alcanzó el mayor rendimiento teórico con un F1-Score de 0,6857 y un 72,85\% de exactitud. Sin embargo, en el paradigma tradicional, XGBoost demonstrated una solidez formidable sobre el texto libre, alcanzando un F1-Score de 0,6738.
+
+Comprobamos que el submuestreo simple (RUS) colapsó el rendimiento de los modelos al destruir variabilidad textual esencial. En cambio, sobre el dataset sintético generado por el VAE, el algoritmo LightGBM se situó como el más adaptativo gracias a su estrategia de crecimiento por hojas, registrando un F1-Score de 0,4400 en códigos.
+
+Aquí tomamos una decisión clave de Ingeniería de Software: aunque BETO ofrece la métrica teórica más alta en laboratorio, los terminales médicos reales del SACYL operan en ordenadores convencionales sin GPU. Desplegar BETO en CPU generaría una latencia inaceptable en consulta. Por ello, elegimos como Propuesta Final la combinación LightGBM + VAE: permite ejecutar predicciones en milisegundos en CPU local, no genera costes de infraestructura y mitiga eficazmente el desbalanceo de clases."
+\end{speechbox}
+
+\clearpage
+\section{Bloque 5: Analítica Relacional de Grafos y Estudio Cartográfico}
+\timebadge{1 min 30 s}{Minuto 7:00 - 8:30}
+
+\paragraph{Puntos clave a recordar:}
+\begin{itemize}[noitemsep]
+    \item \textbf{Neo4j (Louvain):} Separación en Módulo Psiquiátrico Nuclear y Módulo Somático.
+    \item \textbf{Centralidad:} Adyacencia con Síndrome Metabólico y abuso de sustancias como puente de recaídas.
+    \item \textbf{Folium / GeoJSON:} Clustering K-Means ($K=4$) por código postal. Diferencia entre medio rural y urbano.
+\end{itemize}
+
+\begin{speechbox}{Discurso — Qué decir exactamente}
+"Complementamos la predicción con un análisis relacional en Neo4j. Aplicando el algoritmo de Louvain, la red identificó dos comunidades bien definidas: un Módulo Psiquiátrico Nuclear y un Módulo Somático. El análisis de centralidad validó importantes hipótesis clínicas: confirmó la estrecha adyacencia del Síndrome Metabólico (hipertensión y diabetes) con la esquizofrenia, y situó al abuso de sustancias (alcohol y cánnabis) como nodos puente de alta intermediación.
+
+A nivel cartográfico, integramos datos vectoriales GeoJSON en Folium para estudiar la demanda asistencial por código postal en León. El algoritmo K-Means ($K=4$) reveló un hallazgo territorial muy claro: la homogeneidad en el entorno rural frente a la alta fragmentación en micro-áreas complejas dentro de León capital."
+\end{speechbox}
+
+\clearpage
+\section{Bloque 6: Transferencia Tecnológica y Muestreo Rápido de la Web App}
+\timebadge{0 min 30 s}{Minuto 8:30 - 9:00}
+
+\paragraph{Puntos clave a recordar:}
+\begin{itemize}[noitemsep]
+    \item \textbf{Streamlit:} Diseño plano sin pop-ups para reducir carga cognitiva.
+    \item \textbf{Módulos:} Buscador individual CIE-9/10, conversor por lotes CSV y visores gráficos/cartográficos.
+\end{itemize}
+
+\begin{speechbox}{Discurso — Qué decir exactamente}
+"Para cerrar el ciclo de transferencia tecnológica, empaquetamos estas herramientas en una aplicación web interactiva en Streamlit diseñada bajo principios de navegación plana. La plataforma integra el módulo del conversor CIE-9/CIE-10 individual con autocompletado y API internacional, un procesador por lotes para la traducción masiva de archivos CSV, y visores interactivos para inspeccionar los grafos y mapas."
+\end{speechbox}
+
+\clearpage
+\section{Bloque 7: Conclusiones, Aportaciones y Trabajo Futuro}
+\timebadge{1 min 00 s}{Minuto 9:00 - 10:00}
+
+\paragraph{Puntos clave a recordar:}
+\begin{itemize}[noitemsep]
+    \item \textbf{3 Hitos:} Recurso CIE 108k \textit{open-source}, Pipeline ejecutable en CPU local y App interactiva.
+    \item \textbf{Futuro:} Fine-tuning en ClinicalBERT, Redes Neuronales de Grafos (GNNs) e integración con MEDORA mediante HL7/FHIR.
+\end{itemize}
+
+\begin{speechbox}{Discurso — Qué decir exactamente}
+" En conclusión, este Trabajo de Fin de Grado aporta tres hitos fundamentales: en primer lugar, entregamos un recurso unificado y abierto de 108.054 equivalencias CIE-9/CIE-10 que resuelve la brecha de interoperabilidad documental en español; en segundo lugar, demostramos que la combinación de LightGBM con VAE constituye una solución de soporte clínico sostenible, precisa y ejecutable en CPU convencionales; y en tercer lugar, aportamos una herramienta web funcional lista para trasladar la analítica de grafos a la consulta psiquiátrica.
+
+Como líneas futuras, planteamos evolucionar hacia modelos biomédicos como ClinicalBERT, aplicar Redes Neuronales de Grafos (GNNs), e integrar modularmente esta aplicación en el sistema MEDORA.
+
+Muchas gracias por su atención. Quedo a su entera disposición para responder a las preguntas del tribunal."
+\end{speechbox}
+
+\end{document}
